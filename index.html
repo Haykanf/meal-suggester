@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>What's for Dinner?</title>
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        .meal-display {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+        .button {
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+        }
+        .button:hover {
+            background: #2980b9;
+        }
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .ingredients-list li {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .steps {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .steps li {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>What's for Dinner?</h1>
+            <div class="tagline">Healthy, Simple, Budget-Friendly Meals</div>
+            <div class="tagline">Using Ingredients You Already Have!</div>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="button" onclick="suggestMeal()">Suggest a Meal</div>
+            <div class="button" onclick="suggestHealthyMeal()" style="background: #27ae60;">Healthy Option</div>
+        </div>
+
+        <div id="mealDisplay" class="meal-display">
+            <h2 id="mealName"></h2>
+            <h3>Ingredients:</h3>
+            <ul id="ingredientsList" class="ingredients-list"></ul>
+            <h3>Steps:</h3>
+            <ol id="stepsList" class="steps"></ol>
+            <div style="text-align: right">
+                <span>Difficulty: <span id="difficulty"></span>/5</span><br>
+                <span>Health Score: <span id="healthScore"></span>/5</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const meals = {
+            "Vegetable Omelette": {
+                ingredients: ["eggs", "onion", "bell pepper", "salt", "pepper", "olive oil"],
+                difficulty: 2,
+                healthScore: 5,
+                steps: [
+                    "Beat eggs in a bowl",
+                    "Chop vegetables into small pieces",
+                    "Heat olive oil in a pan",
+                    "Cook vegetables until soft",
+                    "Pour in eggs and cook until set"
+                ]
+            },
+            "Greek Yogurt Parfait": {
+                ingredients: ["yogurt", "honey", "banana", "oats"],
+                difficulty: 1,
+                healthScore: 4,
+                steps: [
+                    "Layer yogurt in bowl",
+                    "Add sliced banana",
+                    "Sprinkle oats",
+                    "Drizzle honey"
+                ]
+            },
+            "Tuna Salad Sandwich": {
+                ingredients: ["canned tuna", "bread", "onion", "salt", "pepper", "olive oil"],
+                difficulty: 2,
+                healthScore: 4,
+                steps: [
+                    "Drain tuna",
+                    "Mix with chopped onion and seasoning",
+                    "Spread on bread"
+                ]
+            },
+            "Rice and Beans": {
+                ingredients: ["rice", "canned beans", "onion", "garlic", "salt", "olive oil"],
+                difficulty: 2,
+                healthScore: 4,
+                steps: [
+                    "Cook rice according to package",
+                    "Sauté onion and garlic",
+                    "Add beans and heat through",
+                    "Season and combine with rice"
+                ]
+            }
+        };
+
+        function displayMeal(mealName, meal) {
+            document.getElementById('mealDisplay').style.display = 'block';
+            document.getElementById('mealName').textContent = mealName;
+            document.getElementById('difficulty').textContent = meal.difficulty;
+            document.getElementById('healthScore').textContent = meal.healthScore;
+
+            const ingredientsList = document.getElementById('ingredientsList');
+            ingredientsList.innerHTML = '';
+            meal.ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                ingredientsList.appendChild(li);
+            });
+
+            const stepsList = document.getElementById('stepsList');
+            stepsList.innerHTML = '';
+            meal.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.textContent = step;
+                stepsList.appendChild(li);
+            });
+        }
+
+        function suggestMeal() {
+            const mealNames = Object.keys(meals);
+            const randomMeal = mealNames[Math.floor(Math.random() * mealNames.length)];
+            displayMeal(randomMeal, meals[randomMeal]);
+        }
+
+        function suggestHealthyMeal() {
+            const healthyMeals = Object.entries(meals).filter(([_, meal]) => meal.healthScore >= 4);
+            const randomMeal = healthyMeals[Math.floor(Math.random() * healthyMeals.length)];
+            displayMeal(randomMeal[0], randomMeal[1]);
+        }
+    </script>
+</body>
+</html>
