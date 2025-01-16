@@ -120,38 +120,352 @@
     </div>
 
     <script>
-        const meals = {
-            "Vegetable Omelette": {
-                ingredients: ["eggs", "onion", "bell pepper", "salt", "pepper", "olive oil"],
-                difficulty: 2,
-                healthScore: 5,
-                steps: [
-                    "Beat eggs in a bowl",
-                    "Chop vegetables into small pieces",
-                    "Heat olive oil in a pan",
-                    "Cook vegetables until soft",
-                    "Pour in eggs and cook until set"
-                ],
-                image: "https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800",
-                attribution: "Photo by Joseph Gonzalez on Unsplash"
-            },
-            // Add the image and attribution properties to each recipe...
-            // Example for next recipe:
-            "Greek Yogurt Parfait": {
-                ingredients: ["yogurt", "honey", "banana", "oats"],
-                difficulty: 1,
-                healthScore: 4,
-                steps: [
-                    "Layer yogurt in bowl",
-                    "Add sliced banana",
-                    "Sprinkle oats",
-                    "Drizzle honey"
-                ],
-                image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800",
-                attribution: "Photo by Brooke Lark on Unsplash"
-            }
-            // Continue adding image and attribution for each recipe...
-        };
+       const meals = {
+    "Vegetable Omelette": {
+        ingredients: ["eggs", "onion", "bell pepper", "salt", "pepper", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Beat eggs in a bowl",
+            "Chop vegetables into small pieces",
+            "Heat olive oil in a pan",
+            "Cook vegetables until soft",
+            "Pour in eggs and cook until set"
+        ],
+        image: "https://images.unsplash.com/photo-1565179006353-f9e5b6ac8bc4?w=800",
+        attribution: "Photo by Yulian Karadzhov on Unsplash"
+    },
+    "Greek Yogurt Parfait": {
+        ingredients: ["yogurt", "honey", "banana", "oats"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Layer yogurt in bowl",
+            "Add sliced banana",
+            "Sprinkle oats",
+            "Drizzle honey"
+        ],
+        image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800",
+        attribution: "Photo by Brooke Lark on Unsplash"
+    },
+    "Tuna Salad Sandwich": {
+        ingredients: ["canned tuna", "bread", "onion", "salt", "pepper", "olive oil"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Drain tuna",
+            "Mix with chopped onion and seasoning",
+            "Spread on bread"
+        ],
+        image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847?w=800",
+        attribution: "Photo by Mgg Vitchakorn on Unsplash"
+    },
+    "Rice and Beans": {
+        ingredients: ["rice", "canned beans", "onion", "garlic", "salt", "olive oil"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook rice according to package",
+            "Sauté onion and garlic",
+            "Add beans and heat through",
+            "Season and combine with rice"
+        ],
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800",
+        attribution: "Photo by Marcos Paulo Prado on Unsplash"
+    },
+    "Quinoa Buddha Bowl": {
+        ingredients: ["quinoa", "chickpeas", "sweet potato", "kale", "tahini", "lemon juice"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Cook quinoa according to package",
+            "Roast sweet potato chunks",
+            "Massage kale with lemon juice",
+            "Mix tahini with lemon juice for dressing",
+            "Assemble bowl with all ingredients"
+        ],
+        image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800",
+        attribution: "Photo by Brooke Lark on Unsplash"
+    },
+    "Mediterranean Pasta": {
+        ingredients: ["whole wheat pasta", "cherry tomatoes", "olives", "feta cheese", "olive oil", "garlic"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook pasta al dente",
+            "Halve tomatoes and olives",
+            "Sauté garlic in olive oil",
+            "Toss everything together",
+            "Crumble feta on top"
+        ],
+        image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800",
+        attribution: "Photo by Eaters Collective on Unsplash"
+    },
+    "Black Bean Tacos": {
+        ingredients: ["black beans", "corn tortillas", "avocado", "lime", "cilantro", "hot sauce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Heat beans with seasonings",
+            "Warm tortillas",
+            "Mash avocado with lime juice",
+            "Assemble tacos with toppings"
+        ],
+        image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800",
+        attribution: "Photo by Krisztian Tabori on Unsplash"
+    },
+    "Lentil Soup": {
+        ingredients: ["red lentils", "carrots", "onion", "celery", "vegetable broth", "cumin"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Chop vegetables",
+            "Sauté vegetables until soft",
+            "Add lentils and broth",
+            "Simmer until lentils are tender",
+            "Season with cumin"
+        ],
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800",
+        attribution: "Photo by Monika Grabkowska on Unsplash"
+    },
+    "Chickpea Curry": {
+        ingredients: ["chickpeas", "coconut milk", "curry powder", "onion", "tomatoes", "rice"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Sauté onions until golden",
+            "Add curry powder and tomatoes",
+            "Pour in coconut milk",
+            "Add chickpeas and simmer",
+            "Serve over rice"
+        ],
+        image: "https://images.unsplash.com/photo-1548369937-47519962c11a?w=800",
+        attribution: "Photo by Anita Peeples on Unsplash"
+    },
+    "Stir-Fried Tofu": {
+        ingredients: ["tofu", "broccoli", "carrots", "soy sauce", "ginger", "rice"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Press and cube tofu",
+            "Chop vegetables",
+            "Stir-fry tofu until golden",
+            "Add vegetables and sauce",
+            "Serve over rice"
+        ],
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800",
+        attribution: "Photo by Anna Pelzer on Unsplash"
+    },
+    "Sweet Potato Toast": {
+        ingredients: ["sweet potato", "avocado", "eggs", "salt", "pepper", "red pepper flakes"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Slice sweet potato lengthwise",
+            "Toast slices until soft",
+            "Mash avocado for topping",
+            "Fry eggs",
+            "Assemble and season"
+        ],
+        image: "https://images.unsplash.com/photo-1596194757821-6bc6ed4ae31a?w=800",
+        attribution: "Photo by Monika Grabkowska on Unsplash"
+    },
+    "Mushroom Barley Soup": {
+        ingredients: ["mushrooms", "barley", "carrots", "celery", "onion", "vegetable broth"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Sauté vegetables",
+            "Add mushrooms and cook",
+            "Add barley and broth",
+            "Simmer until barley is tender"
+        ],
+        image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800",
+        attribution: "Photo by Monika Grabkowska on Unsplash"
+    },
+    "Cauliflower Fried Rice": {
+        ingredients: ["cauliflower", "eggs", "peas", "carrots", "soy sauce", "ginger"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Rice the cauliflower",
+            "Scramble eggs",
+            "Stir-fry vegetables",
+            "Combine all ingredients",
+            "Season with soy sauce"
+        ],
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800",
+        attribution: "Photo by Micheile Henderson on Unsplash"
+    },
+    "Shakshuka": {
+        ingredients: ["eggs", "tomatoes", "onion", "bell pepper", "cumin", "paprika"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Sauté onions and peppers",
+            "Add tomatoes and spices",
+            "Create wells for eggs",
+            "Cook eggs in sauce"
+        ],
+        image: "https://images.unsplash.com/photo-1590412200988-a436970781fa?w=800",
+        attribution: "Photo by Karolina Kołodziejczak on Unsplash"
+    },
+    "Vegetable Curry Soup": {
+        ingredients: ["sweet potato", "spinach", "coconut milk", "curry paste", "lime", "cilantro"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Cook sweet potato chunks",
+            "Add coconut milk and curry",
+            "Simmer until vegetables are tender",
+            "Stir in spinach",
+            "Garnish with lime and cilantro"
+        ],
+        image: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800",
+        attribution: "Photo by Monika Grabkowska on Unsplash"
+    },
+    "Mediterranean Quinoa Bowl": {
+        ingredients: ["quinoa", "cucumber", "tomatoes", "olives", "feta", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Cook quinoa",
+            "Chop vegetables",
+            "Combine ingredients",
+            "Dress with olive oil",
+            "Top with feta"
+        ],
+        image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=800",
+        attribution: "Photo by Anh Nguyen on Unsplash"
+    },
+    "Chickpea Salad Sandwich": {
+        ingredients: ["chickpeas", "celery", "mayo", "mustard", "bread", "lettuce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Mash chickpeas",
+            "Mix with mayo and mustard",
+            "Add chopped celery",
+            "Assemble sandwich"
+        ],
+        image: "https://images.unsplash.com/photo-1540914124281-342587941389?w=800",
+        attribution: "Photo by Eaters Collective on Unsplash"
+    },
+    "Zucchini Noodles with Pesto": {
+        ingredients: ["zucchini", "pesto", "cherry tomatoes", "pine nuts", "parmesan", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Spiralize zucchini",
+            "Halve tomatoes",
+            "Toss with pesto",
+            "Top with pine nuts and cheese"
+        ],
+        image: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=800",
+        attribution: "Photo by Louis Hansel on Unsplash"
+    },
+    "Black Bean Burrito Bowl": {
+        ingredients: ["black beans", "rice", "corn", "avocado", "salsa", "lime"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook rice",
+            "Heat beans and corn",
+            "Slice avocado",
+            "Assemble bowl",
+            "Top with salsa"
+        ],
+        image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=800",
+        attribution: "Photo by Ella Olsson on Unsplash"
+    },
+    "Lentil Shepherd's Pie": {
+        ingredients: ["lentils", "potatoes", "carrots", "peas", "onion", "garlic"],
+        difficulty: 4,
+        healthScore: 4,
+        steps: [
+            "Cook lentils",
+            "Mash potatoes",
+            "Prepare vegetable filling",
+            "Layer in baking dish",
+            "Bake until golden"
+        ],
+        image: "https://images.unsplash.com/photo-1619894991209-9f9694be045a?w=800",
+        attribution: "Photo by Jennifer Burk on Unsplash"
+    },
+    "Miso Soup with Tofu": {
+        ingredients: ["tofu", "miso paste", "seaweed", "green onions", "mushrooms", "soy sauce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Heat dashi stock",
+            "Add cubed tofu",
+            "Dissolve miso paste",
+            "Add seaweed and mushrooms",
+            "Garnish with green onions"
+        ],
+        image: "https://images.unsplash.com/photo-1582271929299-4b32721c7323?w=800",
+        attribution: "Photo by Mahmoud Fawzy on Unsplash"
+    },
+    "Roasted Vegetable Couscous": {
+        ingredients: ["couscous", "zucchini", "bell peppers", "chickpeas", "olive oil", "lemon"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Roast vegetables",
+            "Prepare couscous",
+            "Heat chickpeas",
+            "Combine ingredients",
+            "Dress with lemon and oil"
+        ],
+        image: "https://images.unsplash.com/photo-1663592870419-89e4ed7d0cb4?w=800",
+        attribution: "Photo by Karolina Kołodziejczak on Unsplash"
+    },
+    "Spinach and White Bean Soup": {
+        ingredients: ["white beans", "spinach", "carrots", "garlic", "vegetable broth", "herbs"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Sauté vegetables",
+            "Add beans and broth",
+            "Simmer until hot",
+            "Add spinach",
+            "Season with herbs"
+        ],
+        image: "https://images.unsplash.com/photo-1616501268209-edfcb4b6fc16?w=800",
+        attribution: "Photo by Markus Spiske on Unsplash"
+    },
+    "Peanut Butter Banana Overnight Oats": {
+        ingredients: ["oats", "peanut butter", "banana", "milk", "chia seeds", "honey"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Mix oats and milk",
+            "Add peanut butter and honey",
+            "Stir in chia seeds",
+            "Refrigerate overnight",
+            "Top with banana slices"
+        ],
+        image: "https://images.unsplash.com/photo-1583645561941-3419008cc569?w=800",
+        attribution: "Photo by Wesual Click on Unsplash"
+    },
+    "Mediterranean Hummus Bowl": {
+        ingredients: ["hummus", "cucumber", "tomatoes", "olives", "pita bread", "olive oil"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Spread hummus in bowl",
+            "Chop vegetables",
+            "Arrange toppings",
+            "Drizzle with olive oil",
+            "Serve with pita"
+        ],
+        image: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=800",
+        attribution: "Photo by Aneta Voborilova on Unsplash"
+    }
+    // ... continuing with all 25 recipes in the same format
+
+    // For brevity I'll show you how to add the remaining recipes. Would you like me to continue with the rest of the recipes (11-25) with their corresponding images?
+};
 
         function displayMeal(mealName, meal) {
             document.getElementById('mealDisplay').style.display = 'block';
