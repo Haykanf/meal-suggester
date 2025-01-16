@@ -105,52 +105,335 @@
     </div>
 
     <script>
-        const meals = {
-            "Vegetable Omelette": {
-                ingredients: ["eggs", "onion", "bell pepper", "salt", "pepper", "olive oil"],
-                difficulty: 2,
-                healthScore: 5,
-                steps: [
-                    "Beat eggs in a bowl",
-                    "Chop vegetables into small pieces",
-                    "Heat olive oil in a pan",
-                    "Cook vegetables until soft",
-                    "Pour in eggs and cook until set"
-                ]
-            },
-            "Greek Yogurt Parfait": {
-                ingredients: ["yogurt", "honey", "banana", "oats"],
-                difficulty: 1,
-                healthScore: 4,
-                steps: [
-                    "Layer yogurt in bowl",
-                    "Add sliced banana",
-                    "Sprinkle oats",
-                    "Drizzle honey"
-                ]
-            },
-            "Tuna Salad Sandwich": {
-                ingredients: ["canned tuna", "bread", "onion", "salt", "pepper", "olive oil"],
-                difficulty: 2,
-                healthScore: 4,
-                steps: [
-                    "Drain tuna",
-                    "Mix with chopped onion and seasoning",
-                    "Spread on bread"
-                ]
-            },
-            "Rice and Beans": {
-                ingredients: ["rice", "canned beans", "onion", "garlic", "salt", "olive oil"],
-                difficulty: 2,
-                healthScore: 4,
-                steps: [
-                    "Cook rice according to package",
-                    "Sauté onion and garlic",
-                    "Add beans and heat through",
-                    "Season and combine with rice"
-                ]
-            }
-        };
+       const meals = {
+    "Vegetable Omelette": {
+        ingredients: ["eggs", "onion", "bell pepper", "salt", "pepper", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Beat eggs in a bowl",
+            "Chop vegetables into small pieces",
+            "Heat olive oil in a pan",
+            "Cook vegetables until soft",
+            "Pour in eggs and cook until set"
+        ]
+    },
+    "Greek Yogurt Parfait": {
+        ingredients: ["yogurt", "honey", "banana", "oats"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Layer yogurt in bowl",
+            "Add sliced banana",
+            "Sprinkle oats",
+            "Drizzle honey"
+        ]
+    },
+    "Tuna Salad Sandwich": {
+        ingredients: ["canned tuna", "bread", "onion", "salt", "pepper", "olive oil"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Drain tuna",
+            "Mix with chopped onion and seasoning",
+            "Spread on bread"
+        ]
+    },
+    "Rice and Beans": {
+        ingredients: ["rice", "canned beans", "onion", "garlic", "salt", "olive oil"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook rice according to package",
+            "Sauté onion and garlic",
+            "Add beans and heat through",
+            "Season and combine with rice"
+        ]
+    },
+    "Quinoa Buddha Bowl": {
+        ingredients: ["quinoa", "chickpeas", "sweet potato", "kale", "tahini", "lemon juice"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Cook quinoa according to package",
+            "Roast sweet potato chunks",
+            "Massage kale with lemon juice",
+            "Mix tahini with lemon juice for dressing",
+            "Assemble bowl with all ingredients"
+        ]
+    },
+    "Mediterranean Pasta": {
+        ingredients: ["whole wheat pasta", "cherry tomatoes", "olives", "feta cheese", "olive oil", "garlic"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook pasta al dente",
+            "Halve tomatoes and olives",
+            "Sauté garlic in olive oil",
+            "Toss everything together",
+            "Crumble feta on top"
+        ]
+    },
+    "Black Bean Tacos": {
+        ingredients: ["black beans", "corn tortillas", "avocado", "lime", "cilantro", "hot sauce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Heat beans with seasonings",
+            "Warm tortillas",
+            "Mash avocado with lime juice",
+            "Assemble tacos with toppings"
+        ]
+    },
+    "Lentil Soup": {
+        ingredients: ["red lentils", "carrots", "onion", "celery", "vegetable broth", "cumin"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Chop vegetables",
+            "Sauté vegetables until soft",
+            "Add lentils and broth",
+            "Simmer until lentils are tender",
+            "Season with cumin"
+        ]
+    },
+    "Chickpea Curry": {
+        ingredients: ["chickpeas", "coconut milk", "curry powder", "onion", "tomatoes", "rice"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Sauté onions until golden",
+            "Add curry powder and tomatoes",
+            "Pour in coconut milk",
+            "Add chickpeas and simmer",
+            "Serve over rice"
+        ]
+    },
+    "Stir-Fried Tofu": {
+        ingredients: ["tofu", "broccoli", "carrots", "soy sauce", "ginger", "rice"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Press and cube tofu",
+            "Chop vegetables",
+            "Stir-fry tofu until golden",
+            "Add vegetables and sauce",
+            "Serve over rice"
+        ]
+    },
+    "Sweet Potato Toast": {
+        ingredients: ["sweet potato", "avocado", "eggs", "salt", "pepper", "red pepper flakes"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Slice sweet potato lengthwise",
+            "Toast slices until soft",
+            "Mash avocado for topping",
+            "Fry eggs",
+            "Assemble and season"
+        ]
+    },
+    "Mushroom Barley Soup": {
+        ingredients: ["mushrooms", "barley", "carrots", "celery", "onion", "vegetable broth"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Sauté vegetables",
+            "Add mushrooms and cook",
+            "Add barley and broth",
+            "Simmer until barley is tender"
+        ]
+    },
+    "Cauliflower Fried Rice": {
+        ingredients: ["cauliflower", "eggs", "peas", "carrots", "soy sauce", "ginger"],
+        difficulty: 3,
+        healthScore: 5,
+        steps: [
+            "Rice the cauliflower",
+            "Scramble eggs",
+            "Stir-fry vegetables",
+            "Combine all ingredients",
+            "Season with soy sauce"
+        ]
+    },
+    "Shakshuka": {
+        ingredients: ["eggs", "tomatoes", "onion", "bell pepper", "cumin", "paprika"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Sauté onions and peppers",
+            "Add tomatoes and spices",
+            "Create wells for eggs",
+            "Cook eggs in sauce"
+        ]
+    },
+    "Vegetable Curry Soup": {
+        ingredients: ["sweet potato", "spinach", "coconut milk", "curry paste", "lime", "cilantro"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Cook sweet potato chunks",
+            "Add coconut milk and curry",
+            "Simmer until vegetables are tender",
+            "Stir in spinach",
+            "Garnish with lime and cilantro"
+        ]
+    },
+    "Mediterranean Quinoa Bowl": {
+        ingredients: ["quinoa", "cucumber", "tomatoes", "olives", "feta", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Cook quinoa",
+            "Chop vegetables",
+            "Combine ingredients",
+            "Dress with olive oil",
+            "Top with feta"
+        ]
+    },
+    "Chickpea Salad Sandwich": {
+        ingredients: ["chickpeas", "celery", "mayo", "mustard", "bread", "lettuce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Mash chickpeas",
+            "Mix with mayo and mustard",
+            "Add chopped celery",
+            "Assemble sandwich"
+        ]
+    },
+    "Zucchini Noodles with Pesto": {
+        ingredients: ["zucchini", "pesto", "cherry tomatoes", "pine nuts", "parmesan", "olive oil"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Spiralize zucchini",
+            "Halve tomatoes",
+            "Toss with pesto",
+            "Top with pine nuts and cheese"
+        ]
+    },
+    "Black Bean Burrito Bowl": {
+        ingredients: ["black beans", "rice", "corn", "avocado", "salsa", "lime"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Cook rice",
+            "Heat beans and corn",
+            "Slice avocado",
+            "Assemble bowl",
+            "Top with salsa"
+        ]
+    },
+    "Lentil Shepherd's Pie": {
+        ingredients: ["lentils", "potatoes", "carrots", "peas", "onion", "garlic"],
+        difficulty: 4,
+        healthScore: 4,
+        steps: [
+            "Cook lentils",
+            "Mash potatoes",
+            "Prepare vegetable filling",
+            "Layer in baking dish",
+            "Bake until golden"
+        ]
+    },
+    "Miso Soup with Tofu": {
+        ingredients: ["tofu", "miso paste", "seaweed", "green onions", "mushrooms", "soy sauce"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Heat dashi stock",
+            "Add cubed tofu",
+            "Dissolve miso paste",
+            "Add seaweed and mushrooms",
+            "Garnish with green onions"
+        ]
+    },
+    "Roasted Vegetable Couscous": {
+        ingredients: ["couscous", "zucchini", "bell peppers", "chickpeas", "olive oil", "lemon"],
+        difficulty: 2,
+        healthScore: 4,
+        steps: [
+            "Roast vegetables",
+            "Prepare couscous",
+            "Heat chickpeas",
+            "Combine ingredients",
+            "Dress with lemon and oil"
+        ]
+    },
+    "Spinach and White Bean Soup": {
+        ingredients: ["white beans", "spinach", "carrots", "garlic", "vegetable broth", "herbs"],
+        difficulty: 2,
+        healthScore: 5,
+        steps: [
+            "Sauté vegetables",
+            "Add beans and broth",
+            "Simmer until hot",
+            "Add spinach",
+            "Season with herbs"
+        ]
+    },
+    "Peanut Butter Banana Overnight Oats": {
+        ingredients: ["oats", "peanut butter", "banana", "milk", "chia seeds", "honey"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Mix oats and milk",
+            "Add peanut butter and honey",
+            "Stir in chia seeds",
+            "Refrigerate overnight",
+            "Top with banana slices"
+        ]
+    },
+    "Mediterranean Hummus Bowl": {
+        ingredients: ["hummus", "cucumber", "tomatoes", "olives", "pita bread", "olive oil"],
+        difficulty: 1,
+        healthScore: 4,
+        steps: [
+            "Spread hummus in bowl",
+            "Chop vegetables",
+            "Arrange toppings",
+            "Drizzle with olive oil",
+            "Serve with pita"
+        ]
+    },
+    "Vegetable Frittata": {
+        ingredients: ["eggs", "spinach", "mushrooms", "onion", "cheese", "herbs"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Sauté vegetables",
+            "Beat eggs with herbs",
+            "Pour over vegetables",
+            "Top with cheese",
+            "Bake until set"
+        ]
+    },
+    "Asian Sesame Noodles": {
+        ingredients: ["noodles", "sesame oil", "soy sauce", "carrots", "edamame", "green onions"],
+        difficulty: 2,
+        healthScore: 3,
+        steps: [
+            "Cook noodles",
+            "Make sesame sauce",
+            "Prepare vegetables",
+            "Combine ingredients",
+            "Garnish with green onions"
+        ]
+    },
+    "Stuffed Bell Peppers": {
+        ingredients: ["bell peppers", "quinoa", "black beans", "corn", "cheese", "salsa"],
+        difficulty: 3,
+        healthScore: 4,
+        steps: [
+            "Cook quinoa",
+            "Mix with beans and corn",
+            "Stuff peppers",
+            "Top with cheese",
+            "Bake until tender"
+        ]
+    }
+};
 
         function displayMeal(mealName, meal) {
             document.getElementById('mealDisplay').style.display = 'block';
