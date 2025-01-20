@@ -142,11 +142,23 @@
             margin: 25px 0;
             padding-left: 25px;
             color: #fff;
+            list-style-position: inside;
         }
 
         .steps li {
             margin: 15px 0;
             line-height: 1.6;
+        }
+
+        h2, h3 {
+            color: gold;
+            margin: 20px 0;
+        }
+
+        .tagline {
+            color: gold;
+            font-size: 1.2em;
+            margin-top: 10px;
         }
 
         @keyframes spin {
@@ -158,6 +170,33 @@
 
         .spinning {
             animation: spin 0.1s linear infinite;
+        }
+
+        .difficulty-health {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid gold;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label {
+            color: gold;
+            margin-bottom: 5px;
+        }
+
+        .recipe-name {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: gold;
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
         }
     </style>
 </head>
@@ -174,14 +213,27 @@
             </div>
         </div>
 
-        <button class="spin-button" onclick="spinSlot()">🎲 SPIN! 🎲</button>
+        <button class="spin-button" onclick="window.spinSlot()">🎲 SPIN! 🎲</button>
 
         <div id="recipeDetails" class="recipe-details">
-            <h2 id="recipeName"></h2>
+            <div id="recipeName" class="recipe-name"></div>
             <img id="recipeImage" class="recipe-image" src="" alt="">
-            <h3>✨ Ingredients:</h3>
+            
+            <div class="difficulty-health">
+                <div class="stat">
+                    <div class="stat-label">Difficulty</div>
+                    <div id="difficulty"></div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Health Score</div>
+                    <div id="healthScore"></div>
+                </div>
+            </div>
+
+            <h3>✨ Ingredients</h3>
             <ul id="ingredientsList" class="ingredients-list"></ul>
-            <h3>🪄 Steps:</h3>
+            
+            <h3>🪄 Steps</h3>
             <ol id="stepsList" class="steps"></ol>
         </div>
     </div>
@@ -242,10 +294,21 @@
             const recipeImageEl = document.getElementById('recipeImage');
             const ingredientsList = document.getElementById('ingredientsList');
             const stepsList = document.getElementById('stepsList');
+            const difficultyEl = document.getElementById('difficulty');
+            const healthScoreEl = document.getElementById('healthScore');
             
-            recipeTitleEl.textContent = `🎯 ${recipeName}`;
-            recipeImageEl.src = recipe.image;
+            recipeTitleEl.textContent = `🍽️ ${recipeName}`;
+            
+            // Generate a random placeholder image for the recipe
+            const imageWidth = 800;
+            const imageHeight = 600;
+            const placeholderUrl = `/api/placeholder/${imageWidth}/${imageHeight}`;
+            recipeImageEl.src = placeholderUrl;
             recipeImageEl.alt = recipeName;
+            
+            // Display difficulty and health score
+            difficultyEl.textContent = "⭐".repeat(recipe.difficulty) + "☆".repeat(5 - recipe.difficulty);
+            healthScoreEl.textContent = "💚".repeat(recipe.healthScore) + "🤍".repeat(5 - recipe.healthScore);
             
             ingredientsList.innerHTML = '';
             recipe.ingredients.forEach(ingredient => {
