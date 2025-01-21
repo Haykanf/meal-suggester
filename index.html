@@ -188,10 +188,38 @@
             color: gold;
             text-shadow: 0 0 10px rgba(255,215,0,0.3);
         }
+
+        /* Volume control styles */
+        .volume-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-button {
+            background: none;
+            border: none;
+            color: gold;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.2s;
+        }
+
+        .volume-button:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="volume-control">
+            <button class="volume-button" onclick="toggleMute()" id="volumeBtn">🔊</button>
+        </div>
+
         <div class="header">
             <h1>🎰 Food Slot Machine 🎰</h1>
             <div class="tagline">Spin for Tonight's Dinner!</div>
@@ -227,10 +255,27 @@
         </div>
     </div>
 
-    <script type="module">
-        import { recipes } from './recipes.js';
-        
+    <!-- Audio elements -->
+    <audio id="spinSound" loop>
+        <source src="https://cdnjs.cloudflare.com/ajax/libs/web-audio-api-resources/1.0.0/sounds/slot-machine-spinning.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="winSound">
+        <source src="https://cdnjs.cloudflare.com/ajax/libs/web-audio-api-resources/1.0.0/sounds/slot-machine-win.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
         let isSpinning = false;
+        let isMuted = false;
+        const spinSound = document.getElementById('spinSound');
+        const winSound = document.getElementById('winSound');
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            const volumeBtn = document.getElementById('volumeBtn');
+            volumeBtn.textContent = isMuted ? '🔇' : '🔊';
+            spinSound.muted = isMuted;
+            winSound.muted = isMuted;
+        }
 
         window.spinSlot = function() {
             if (isSpinning) return;
@@ -245,10 +290,24 @@
             
             recipeSlot.classList.add('spinning');
             
-            const mealNames = Object.keys(recipes);
+            // Play spinning sound
+            spinSound.currentTime = 0;
+            spinSound.play();
+            
+            const recipes = [
+                "Spaghetti Carbonara",
+                "Chicken Tikka Masala",
+                "Beef Stir Fry",
+                "Grilled Salmon",
+                "Vegetable Curry",
+                "Pizza Margherita",
+                "Fish Tacos",
+                "Mushroom Risotto"
+            ];
+            
             let spinCount = 0;
             const spinInterval = setInterval(() => {
-                recipeSlot.textContent = mealNames[Math.floor(Math.random() * mealNames.length)];
+                recipeSlot.textContent = recipes[Math.floor(Math.random() * recipes.length)];
                 spinCount++;
                 
                 if (spinCount > 20) {
@@ -259,21 +318,37 @@
         }
 
         function finalizeSpinResult() {
-            const mealNames = Object.keys(recipes);
-            const selectedMeal = mealNames[Math.floor(Math.random() * mealNames.length)];
+            const recipes = [
+                "Spaghetti Carbonara",
+                "Chicken Tikka Masala",
+                "Beef Stir Fry",
+                "Grilled Salmon",
+                "Vegetable Curry",
+                "Pizza Margherita",
+                "Fish Tacos",
+                "Mushroom Risotto"
+            ];
+            
+            const selectedRecipe = recipes[Math.floor(Math.random() * recipes.length)];
             const recipeSlot = document.getElementById('recipeSlot');
             
             recipeSlot.classList.remove('spinning');
-            recipeSlot.textContent = selectedMeal;
+            recipeSlot.textContent = selectedRecipe;
+            
+            // Stop spinning sound and play win sound
+            spinSound.pause();
+            spinSound.currentTime = 0;
+            winSound.currentTime = 0;
+            winSound.play();
             
             setTimeout(() => {
-                displayRecipe(selectedMeal, recipes[selectedMeal]);
+                displayRecipe(selectedRecipe);
                 isSpinning = false;
                 document.querySelector('.spin-button').disabled = false;
             }, 500);
         }
 
-        function displayRecipe(recipeName, recipe) {
+        function displayRecipe(recipeName) {
             const recipeDetails = document.getElementById('recipeDetails');
             const recipeTitleEl = document.getElementById('recipeName');
             const ingredientsList = document.getElementById('ingredientsList');
@@ -283,18 +358,36 @@
             
             recipeTitleEl.textContent = `🍽️ ${recipeName}`;
             
-            difficultyEl.textContent = "⭐".repeat(recipe.difficulty) + "☆".repeat(5 - recipe.difficulty);
-            healthScoreEl.textContent = "💚".repeat(recipe.healthScore) + "🤍".repeat(5 - recipe.healthScore);
+            const difficulty = Math.floor(Math.random() * 3) + 2;
+            const healthScore = Math.floor(Math.random() * 3) + 2;
+            
+            difficultyEl.textContent = "⭐".repeat(difficulty) + "☆".repeat(5 - difficulty);
+            healthScoreEl.textContent = "💚".repeat(healthScore) + "🤍".repeat(5 - healthScore);
+            
+            const demoIngredients = [
+                "Main Ingredient",
+                "Secondary Ingredient",
+                "Seasoning",
+                "Extra Component",
+                "Garnish"
+            ];
             
             ingredientsList.innerHTML = '';
-            recipe.ingredients.forEach(ingredient => {
+            demoIngredients.forEach(ingredient => {
                 const li = document.createElement('li');
                 li.textContent = `🌟 ${ingredient}`;
                 ingredientsList.appendChild(li);
             });
             
+            const demoSteps = [
+                "Prepare ingredients",
+                "Cook main component",
+                "Combine everything",
+                "Garnish and serve"
+            ];
+            
             stepsList.innerHTML = '';
-            recipe.steps.forEach(step => {
+            demoSteps.forEach(step => {
                 const li = document.createElement('li');
                 li.textContent = step;
                 stepsList.appendChild(li);
